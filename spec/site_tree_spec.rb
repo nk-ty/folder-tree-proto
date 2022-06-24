@@ -1,4 +1,4 @@
-require_relative '../parse_tree'
+require_relative '../site_tree'
 
 RSpec.describe SiteTree do
   let(:folders) do
