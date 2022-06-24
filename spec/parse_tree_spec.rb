@@ -1,6 +1,6 @@
 require_relative '../parse_tree'
 
-RSpec.describe ParseTree do
+RSpec.describe SiteTree do
   let(:folders) do
     {
       "data": {
@@ -49,7 +49,7 @@ RSpec.describe ParseTree do
     ]
   end
 
-  let(:folder_site) do
+  let(:expected_parent_child) do
     [
       ["Folder 1","Folder 1_1","Folder 1_1_1","site 1"],
       ["Folder 2","Folder 2_1","site 2"]
@@ -57,6 +57,6 @@ RSpec.describe ParseTree do
   end
 
   it 'parse' do
-    expect(subject.match(folders, sites)).to eq(folder_site)
+    expect(subject.match(folders, sites)).to eq(expected_parent_child)
   end
 end

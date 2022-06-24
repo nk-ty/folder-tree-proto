@@ -1,27 +1,26 @@
-class ParseTree
-  def match(folders, site)
-    res = []
-    site.each do |site|
-      folder_site = []
-      folder_site << site[:name]
-      get_folder(folders[:data][:site_tree][:folders], site, folder_site)
-      res << folder_site
+class SiteTree
+  def match(folders, sites)
+    all_parent_child = []
+    folders[:data][:site_tree][:folders].delete_if{ |folder| folder[:name] == 'ROOT' }
+    sites.each do |site|
+      parent_child = []
+      parent_child << site[:name]
+      follow_parent(folders[:data][:site_tree][:folders], site, parent_child)
+      all_parent_child << parent_child
     end
 
-    res
+    all_parent_child
   end
 
-  def get_folder(parent, child, folder_site)
-    p "start get_folder ================"
-    p parent, child, folder_site
-    parent.each do |pa|
-      if pa[:id].to_i == child[:parent_id].to_i
-        folder_site.unshift(pa[:name])
-        parent.delete(pa)
-        get_folder(parent, pa, folder_site)
+  def follow_parent(parents, child, parent_child)
+    parents.each do |current_parent|
+      if current_parent[:id].to_i == child[:parent_id].to_i
+        parent_child.unshift(current_parent[:name])
+        parents.delete(current_parent)
+        follow_parent(parents, current_parent, parent_child)
       end
     end
 
-    return folder_site
+    return parent_child
   end
 end
