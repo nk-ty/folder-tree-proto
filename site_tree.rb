@@ -1,11 +1,11 @@
 class SiteTree
   def match(folders, sites)
     all_parent_child = []
-    folders[:data][:site_tree][:folders].delete_if{ |folder| folder[:name] == 'ROOT' }
+    folders.delete_if{ |folder| folder[:name] == 'ROOT' }
     sites.each do |site|
       parent_child = []
       parent_child << site[:name]
-      follow_parent(folders[:data][:site_tree][:folders], site, parent_child)
+      follow_parent(folders, site, parent_child)
       all_parent_child << parent_child
     end
 
