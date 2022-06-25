@@ -12,6 +12,8 @@ class SiteTree
     all_parent_child
   end
 
+  private
+
   def follow_parent(parents, child, parent_child)
     parents.each do |current_parent|
       if current_parent[:id].to_i == child[:parent_id].to_i
