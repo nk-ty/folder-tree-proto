@@ -16,6 +16,10 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    working-directory: ruby
+
 jobs:
   test:
 
@@ -23,7 +27,6 @@ jobs:
     strategy:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -34,5 +37,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        working-directory: ruby
     - name: Run rspec
       run: bundle exec rspec ./spec
