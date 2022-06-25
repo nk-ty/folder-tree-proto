@@ -50,7 +50,7 @@ RSpec.describe SiteTree do
     ]
   end
 
-  it 'parse' do
+  it 'Match folders and sites' do
     expect(subject.match(folders, sites)).to eq(expected_parent_child)
   end
 end
