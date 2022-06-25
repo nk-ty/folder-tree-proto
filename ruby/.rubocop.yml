@@ -1,0 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/BlockLength:
+  Max: 60
+
+Style/Documentation:
+  Enabled: false
