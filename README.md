@@ -1,5 +1,7 @@
 # folder-tree-proto
 
+:star:
+
 ## ruby
 ```
 cd ruby
