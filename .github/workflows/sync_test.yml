@@ -4,8 +4,8 @@ on:
     types: [opened, synchronize, reopened]
     # on every topic/feature branches
     branches:
-      - develop
-      - release
+      - main
+
 jobs:
   some_job:
     timeout-minutes: 5
