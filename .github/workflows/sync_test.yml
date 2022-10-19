@@ -1,0 +1,14 @@
+name: sync_test
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    # on every topic/feature branches
+    branches:
+      - develop
+      - release
+jobs:
+  some_job:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello world"
